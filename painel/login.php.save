@@ -1,0 +1,214 @@
+<?php
+include("conexao.php");
+include_once("functions.php");
+include_once(Idioma(1));
+global $_TRA;
+$idioma = empty($_COOKIE['idioma']) ? "br" : $_COOKIE['idioma'];
+
+$VerificarInfoSite = VerificarInfoSite();
+
+$SQL = "SELECT status FROM captcha";
+$SQL = $painel_geral->prepare($SQL);
+$SQL->execute();
+$Ln = $SQL->fetch();
+$captcha = $Ln['status'];
+?>
+<!DOCTYPE html>
+<html lang="<?php echo $idioma; ?>" class="body-full-height">
+    <head>
+        <!-- META SECTION -->
+        <title><?php echo $VerificarInfoSite[0]. " - " .$_TRA['Entrar']; ?></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <link rel="icon" href="favicon.ico" type="image/x-icon" />
+        <!-- END META SECTION -->
+
+        <!-- CSS INCLUDE -->
+        <link rel="stylesheet" type="text/css" id="theme" href="css/<?php echo $VerificarInfoSite[2]; ?>.css"/>
+        <!-- EOF CSS INCLUDE -->
+    </head>
+    <body>
+
+        <div class="login-container">
+
+            <div class="login-box animated fadeInDown">
+                <div class="login-logo">grupo w3br</div>
+                                <div class="login-legenda"><?php echo $VerificarInfoSite[1]; ?></div>
+                <div class="login-body">
+                    <div class="login-title"><strong><?php echo $_TRA['SBV']; ?></strong>, <?php echo $_TRA['Entrar']; ?></div>
+                    <form id="FormLogin" name="FormLogin" class="FormLogin form-horizontal" method="POST" action="javascript:FormLogin()">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <input type=" text" name="usuario" id="usuario" class="form-control" placeholder="<?php echo $_TRA['Usuario']; ?>"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <input style="color #ffffff;" type="password" name="senha" id="senha" class="form-control" placeholder="<?php echo $_TRA['Senha']; ?>"/>
+                        </div>
+                    </div>
+
+                    <?php
+                                        if($captcha == "S"){
+                                        ?>
+<?php
+include("conexao.php");
+include_once("functions.php");
+include_once(Idioma(1));
+global $_TRA;
+$idioma = empty($_COOKIE['idioma']) ? "br" : $_COOKIE['idioma'];
+
+$VerificarInfoSite = VerificarInfoSite();
+
+$SQL = "SELECT status FROM captcha";
+$SQL = $painel_geral->prepare($SQL);
+$SQL->execute();
+$Ln = $SQL->fetch();
+$captcha = $Ln['status'];
+?>
+<!DOCTYPE html>
+<html lang="<?php echo $idioma; ?>" class="body-full-height">
+    <head>        
+        <!-- META SECTION -->
+        <title><?php echo $VerificarInfoSite[0]. " - " .$_TRA['Entrar']; ?></title>            
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        
+        <link rel="icon" href="favicon.ico" type="image/x-icon" />
+        <!-- END META SECTION -->
+        
+        <!-- CSS INCLUDE -->        
+        <link rel="stylesheet" type="text/css" id="theme" href="css/<?php echo $VerificarInfoSite[2]; ?>.css"/>
+        <!-- EOF CSS INCLUDE -->                                     
+    </head>
+    <body>
+
+        <div class="login-container">
+        
+            <div class="login-box animated fadeInDown">
+                <div class="login-logo">grupo w3br</div>
+				<div class="login-legenda"><?php echo $VerificarInfoSite[1]; ?></div>
+                <div class="login-body">
+                    <div class="login-title"><strong><?php echo $_TRA['SBV']; ?></strong>, <?php echo $_TRA['Entrar']; ?></div>
+                    <form id="FormLogin" name="FormLogin" class="FormLogin form-horizontal" method="POST" action="javascript:FormLogin()">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <input type=" text" name="usuario" id="usuario" class="form-control" placeholder="<?php echo $_TRA['Usuario']; ?>"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12"> 
+                            <input style="color #ffffff;" type="password" name="senha" id="senha" class="form-control" placeholder="<?php echo $_TRA['Senha']; ?>"/>
+                        </div>
+                    </div>
+                    
+                    <?php
+					if($captcha == "S"){
+					?>
+                    
+                    <div class="form-group">
+                   		<center>
+                   	 		<div id="StatusCaptcha">
+           						<?php include "CaptchaImg.php"; ?>
+           					</div>
+                        </center>
+                    </div>
+                    
+                    <div class="form-group pointer" onClick="NovoCaptcha()">
+                   	 	<div class="col-md-12 text-right">
+                    		Novo Captcha
+                    	</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <input type="text" name="captcha" id="captcha" class="form-control" placeholder="Digite o Captcha"/>
+                        </div>
+                    </div>
+                    
+                    <?php
+					}
+					?>
+                    
+                    <div class="form-group">
+                   	    <div id="StatusLogin"></div>
+                    	<div class="col-md-12">
+                            <button onClick="FazerLoginIPTV()" class="btn btn-info btn-block"><?php echo $_TRA['Entrar']; ?></button>
+                        </div>
+                    </div>
+                    
+                    </form>
+                </div>
+                <div class="login-footer">
+                    <div class="pull-left">
+                        &copy; 2026 SERVIDOR CS TV. Todos Os Direitos Reservados.
+                </div>
+            
+
+
+
+<style>marquee{border-top: 0px ridge; green; border-bottom: 0px ridge; green;align: center; width: 4
+300px; color: red; font-size: 30px;}
+
+
+</div>
+<style>marquee{border-top: 0px ridge; green; border-bottom: 0px ridge; green;align: center; width: 4
+300px; color: red; font-size: 30px;}
+</style><marquee><b><p><span style="color: #E34724;"><img src= "https://uploaddeimagens.com.br/images/002/527/442/original/claro.png?1583453461" alt="70" width="70" height="70" /> &nbsp;<img src="https://uploaddeimagens.com.br/images/002/527/444/original/sky.png?1583453531" alt="" width="70" height="70" /> &nbsp;<img src="https://uploaddeimagens.com.br/images/002/527/446/original/net.png?1583453579" alt="" width="70" height="70" /> &nbsp;<img src="https://uploaddeimagens.com.br/images/002/527/448/original/A_E.png?1583453620" alt="" width="70" height="70" /> &nbsp;<img src="https://uploaddeimagens.com.br/images/002/527/449/original/AnimalPlanet.png?1583453657" alt="" width="70" height="70" /> &nbsp;<img src="https://uploaddeimagens.com.br/images/002/527/450/original/AXN.png?1583453687" alt="" width="70" height="70" /> &nbsp;<img src="https://uploaddeimagens.com.br/images/002/527/451/original/Bandeirantes.png?1583453727" alt="" width="70" height="70" /> &nbsp;<img src="https://uploaddeimagens.com.br/images/002/527/454/original/BBB.png?1583453934" alt="" width="70" height="70" /> &nbsp;<img src="https://uploaddeimagens.com.br/images/002/527/455/original/Boomerang.png?1583453964" alt="" width="70" height="70" /> &nbsp;  <img src="https://uploaddeimagens.com.br/images/002/527/456/original/CartoonNetwork.png?1583454005" alt="" width="70" height="70" /> &nbsp; <img src="https://uploaddeimagens.com.br/images/002/527/457/original/Cinemax.png?1583454037" alt="" width="70" height="70" /> &nbsp;   <img src="https://uploaddeimagens.com.br/images/002/527/458/original/Combate.png?1583454072" alt="" width="70" height="70" /> &nbsp; <img src="https://uploaddeimagens.com.br/images/002/527/459/original/ComedyCentral.png?1583454118" alt="" width="70" height="70" /> &nbsp;     <img src="https://uploaddeimagens.com.br/images/002/527/462/original/DiscoveryH_H.png?1583454156" alt="" width="70" height="70" /> &nbsp;<img src="https://uploaddeimagens.com.br/images/002/527/465/original/ESPN.png?1583454201" alt="" width="70" height="70" /> &nbsp;        <img src="https://uploaddeimagens.com.br/images/002/527/467/original/ESPNBrasil.png?1583454233" alt="" width="70" height="70" /> &nbsp; <img src="https://uploaddeimagens.com.br/images/002/527/469/original/FOX.png?1583454281" alt="" width="70" height="70" /> &nbsp;        <img src="https://uploaddeimagens.com.br/images/002/527/470/original/FoxSport.png?1583454348" alt="" width="70" height="70" /> &nbsp;<img src="https://uploaddeimagens.com.br/images/002/527/471/original/Globo.png?1583454388" alt="" width="70" height="70" /> &nbsp;         <img src="https://uploaddeimagens.com.br/images/002/527/472/original/H2.png?1583454424" alt="" width="70" height="70" /> &nbsp; <img src="https://uploaddeimagens.com.br/images/002/527/473/original/HBOFamily.png?1583454460" alt="" width="70" height="70" /> &nbsp;          <img src="https://uploaddeimagens.com.br/images/002/527/474/original/HBOPlus.png?1583454497" alt="" width="70" height="70" /> &nbsp;          <img src="https://uploaddeimagens.com.br/images/002/527/475/original/IDInvestigacao_Discovery.png?1583454551" alt="" width="70" height="70" /> &nbsp;          <img src="https://uploaddeimagens.com.br/images/002/527/476/original/Max.png?1583454605" alt="" width="70" height="70" /> &nbsp;           <img src="https://uploaddeimagens.com.br/images/002/527/477/original/Megapix.png?1583454638" alt="" width="70" height="70" /> &nbsp;           <img src="https://uploaddeimagens.com.br/images/002/527/478/original/MTV.png?1583454669" alt="" width="70" height="70" /> &nbsp;           <img src="https://uploaddeimagens.com.br/images/002/527/480/original/Multishow.png?1583454704" alt="" width="70" height="70" /> &nbsp;           <img src="https://uploaddeimagens.com.br/images/002/527/481/original/NatGeoWild.png?1583454734" alt="" width="70" height="70" /> &nbsp;           <img src="https://uploaddeimagens.com.br/images/002/527/482/original/Nickelodeon.png?1583454769" alt="" width="70" height="70" /> &nbsp;           <img src="https://uploaddeimagens.com.br/images/002/527/483/original/Paramount.png?1583454810" alt="" width="70" height="70" /> &nbsp;           <img src="https://uploaddeimagens.com.br/images/002/527/485/original/Playboy.png?1583454835" alt="" width="70" height="70" /> &nbsp;           <img src="https://uploaddeimagens.com.br/images/002/527/486/original/PremiereHD.png?1583454870" alt="" width="70" height="70" /> &nbsp;           <img src="https://uploaddeimagens.com.br/images/002/527/487/original/RecordNews.png?1583454899" alt="" width="70" height="70" /> &nbsp;           <img src="https://uploaddeimagens.com.br/images/002/527/489/original/RecordTV.png?1583454928" alt="" width="70" height="70" /> &nbsp;           <img src="https://uploaddeimagens.com.br/images/002/527/490/original/RedeTV.png?1583454958" alt="" width="70" height="70" /> &nbsp;           <img src="https://uploaddeimagens.com.br/images/002/527/491/original/SBT.png?1583454988" alt="" width="70" height="70" /> &nbsp;           <img src="https://uploaddeimagens.com.br/images/002/527/492/original/Space.png?1583455014" alt="" width="70" height="70" /> &nbsp;           <img src="https://uploaddeimagens.com.br/images/002/527/493/original/SporTV.png?1583455047" alt="" width="70" height="70" /> &nbsp;            <img src="https://uploaddeimagens.com.br/images/002/527/494/original/StudioUniversal.png?1583455070" alt="" width="70" height="70" /> &nbsp;           <img src="https://uploaddeimagens.com.br/images/002/527/495/original/TelecineCult.png?1583455101" alt="" width="70" height="70" /> &nbsp;            <img src="https://uploaddeimagens.com.br/images/002/527/496/original/TelecinePremium.png?1583455130" alt="" width="70" height="70" /> &nbsp;           <img src="https://uploaddeimagens.com.br/images/002/527/498/original/TNT.png?1583455155" alt="" width="70" height="70" /> &nbsp;           <img src="https://uploaddeimagens.com.br/images/002/527/499/original/TNTSeries.png?1583455180" alt="" width="70" height="70" /> &nbsp;           <img src="https://uploaddeimagens.com.br/images/002/527/500/original/Viva.png?1583455210" alt="" width="70" height="70" /> &nbsp;           <img src="https://uploaddeimagens.com.br/images/002/527/501/original/WarnerChannel.png?1583455237" alt="" width="70" height="70" /> &nbsp; 🖊 </strong></strong></strong></strong></strong></span></p><b></marquee>
+              
+                </div>
+            </div>
+            
+        </div>
+
+<script type="text/javascript" src="js/plugins/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="js/plugins.js"></script>  
+<script type="text/javascript" src="js/actions.js"></script>
+
+<script>
+<?php
+if($captcha == "S"){
+?>
+function NovoCaptcha(){
+			
+			panel_refresh($(".login-container"));
+
+			$.post('CaptchaImg.php', function(resposta) {
+				
+			setTimeout(panel_refresh($(".login-container")),500);
+				
+			$("#StatusCaptcha").html('');
+			$("#StatusCaptcha").html(resposta);
+						
+			});
+				
+}
+<?php
+}
+?>
+	
+function FazerLoginIPTV(){
+ 
+	    var Data = $(".FormLogin").serialize();
+		 
+		panel_refresh($(".login-container"));
+				
+		$.post('validar-login.php', Data, function(resposta) {
+			
+				setTimeout(panel_refresh($(".login-container")),500);
+			
+				$("#StatusGeral").html('');
+				$("#StatusGeral").append(resposta);
+		});
+}
+</script>
+
+<div id="StatusGeral"></div>
+
+    </body>
+</html>
+
+
